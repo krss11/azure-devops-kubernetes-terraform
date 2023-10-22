@@ -31,5 +31,5 @@ jobs:
          run: |
            docker buildx create --use
            docker buildx build --platform linux/amd64 -t azurecontainerkrss.azurecr.io/myimage:latest .
-           docker login azurecontainerkrss.azurecr.io -u ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}d}}}
+           docker login azurecontainerkrss.azurecr.io -u ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
            docker push azurecontainerkrss.azurecr.io/myimage:latest
