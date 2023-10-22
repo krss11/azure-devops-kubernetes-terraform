@@ -1,11 +1,11 @@
 name: Build and Push to ACR
 
-   on:
-     push:
+on:
+   push:
        branches:
          - master
 
-   jobs:
+jobs:
      build-and-push:
        runs-on: ubuntu-latest
 
@@ -18,7 +18,7 @@ name: Build and Push to ACR
 
        - name: Log in with Azure
          uses: azure/login@v1
-        with:
+         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
          
        - name: Build and push Docker image
