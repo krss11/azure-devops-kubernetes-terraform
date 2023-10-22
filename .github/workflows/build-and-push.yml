@@ -31,6 +31,5 @@ jobs:
          run: |
            docker buildx create --use
            docker buildx build --platform linux/amd64 -t azurecontainerkrss.azurecr.io/myimage:latest .
-           az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
-           #docker login azurecontainerkrss.azurecr.io 
+           docker login azurecontainerkrss.azurecr.io -u ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}d}}}
            docker push azurecontainerkrss.azurecr.io/myimage:latest
