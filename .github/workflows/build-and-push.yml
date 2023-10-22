@@ -4,6 +4,12 @@ on:
    push:
        branches:
          - master
+env:
+  AZURE_CONTAINER_REGISTRY: "azurecontainerkrss"
+  CONTAINER_NAME: "myimage"
+  RESOURCE_GROUP: "azure-terraform-rg"
+  CLUSTER_NAME: "azureakskrss"
+  DEPLOYMENT_MANIFEST_PATH: "your-deployment-manifest-path"
 
 jobs:
      build-and-push:
@@ -25,5 +31,6 @@ jobs:
          run: |
            docker buildx create --use
            docker buildx build --platform linux/amd64 -t azurecontainerkrss.azurecr.io/myimage:latest .
-           docker login azurecontainerkrss.azurecr.io 
+           az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+           #docker login azurecontainerkrss.azurecr.io 
            docker push azurecontainerkrss.azurecr.io/myimage:latest
