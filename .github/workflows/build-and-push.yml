@@ -32,4 +32,4 @@ jobs:
            docker buildx create --use
            docker build . --file Dockerfile --tag myimage:$(date +%s)
            docker login azurecontainerkrss.azurecr.io -u ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
-           docker push azurecontainerkrss.azurecr.io/myimage:latest
+           docker push azurecontainerkrss.azurecr.io/myimage:$(date +%s)
