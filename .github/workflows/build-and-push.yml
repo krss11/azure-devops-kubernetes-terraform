@@ -32,7 +32,7 @@ jobs:
            docker buildx create --use
            #docker build . --file Dockerfile --tag myimage:$(date +%s)
            docker login azurecontainerkrss.azurecr.io -u ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }} -p ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
-           az acr build --reistry azurecontainerkrss --image myimage:latest
+           az acr build --registry azurecontainerkrss --image myimage:latest
            az acr login --name azurecontainerkrss
            docker build -t myimage:latest
            docker tag myinage:latest azurecontainerkrss.azurecr.io/myimage:latest
